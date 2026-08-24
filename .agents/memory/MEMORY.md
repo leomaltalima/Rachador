@@ -1,0 +1,2 @@
+- [Zod v3 + Orval integers](zod-orval-integers.md) — use `type: number` not `type: integer` in openapi.yaml to avoid Orval generating `zod.int()` (Zod v4-only, breaks typecheck on v3)
+- [Drizzle numeric-to-float](drizzle-numeric-float.md) — `numeric()` columns come back as strings from Drizzle; always `parseFloat()` before JSON responses

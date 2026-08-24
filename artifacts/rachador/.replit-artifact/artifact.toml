@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Rachador"
+description = "App web para divisão de despesas entre amigos em viagens. Permite criar grupos com código de convite, lançar despesas com divisão automática, ver saldo simplificado de quem deve pra quem, e quitar dívidas com cópia de chave Pix."
+version = "1.0.0"
+id = "artifacts/rachador"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18548
+
+[services.development]
+run = "pnpm --filter @workspace/rachador run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/rachador", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/rachador/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18548"
+BASE_PATH = "/"
